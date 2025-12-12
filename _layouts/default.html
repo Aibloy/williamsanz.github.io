@@ -12,14 +12,14 @@
 
     <style>
         :root {
-            --bg-color: #f3f4f6; /* Gris muy claro de fondo */
+            --bg-color: #f3f4f6;
             --card-bg: #ffffff;
-            --text-main: #1f2937; /* Gris oscuro para texto principal */
-            --text-muted: #6b7280; /* Gris medio para texto secundario */
-            --accent-color: #3b82f6; /* Azul vibrante */
-            --accent-light: #eff6ff; /* Azul muy claro para fondos de acento */
-            --shadow-soft: 0 10px 30px -10px rgba(0, 0, 0, 0.05); /* Sombra suave */
-            --shadow-hover: 0 20px 40px -10px rgba(0, 0, 0, 0.1); /* Sombra al pasar el mouse */
+            --text-main: #1f2937;
+            --text-muted: #6b7280;
+            --accent-color: #3b82f6;
+            --accent-light: #eff6ff;
+            --shadow-soft: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
+            --shadow-hover: 0 20px 40px -10px rgba(0, 0, 0, 0.1);
             --radius-lg: 24px;
             --radius-md: 16px;
             --fabric-color: #008272;
@@ -59,7 +59,7 @@
             padding: 40px 20px;
         }
 
-        /* --- Hero Section (Redesigned) --- */
+        /* --- Hero Section --- */
         .hero {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -70,9 +70,7 @@
             position: relative;
         }
 
-        .hero-content {
-            z-index: 1;
-        }
+        .hero-content { z-index: 1; }
 
         .hero-label {
             font-size: 0.9rem;
@@ -120,10 +118,7 @@
             box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
         }
 
-        .social-links {
-            display: flex;
-            gap: 15px;
-        }
+        .social-links { display: flex; gap: 15px; }
 
         .social-link {
             width: 45px;
@@ -158,24 +153,21 @@
             overflow: hidden;
             position: relative;
             box-shadow: 20px 20px 60px rgba(0,0,0,0.1);
-            transform: rotate(3deg); /* Slight tilt for creativity */
+            transform: rotate(3deg);
             transition: transform 0.5s ease;
             background: white;
-            padding: 10px; /* Border effect */
+            padding: 10px;
         }
         
-        .profile-img-container:hover {
-            transform: rotate(0deg);
-        }
+        .profile-img-container:hover { transform: rotate(0deg); }
 
         .profile-img-container img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 18px; /* Inner radius */
+            border-radius: 18px;
         }
 
-        /* Decorative Background Blob */
         .blob {
             position: absolute;
             width: 600px;
@@ -188,7 +180,7 @@
             border-radius: 50%;
         }
 
-        /* --- Section Titles --- */
+        /* --- Section Header --- */
         .section-header {
             margin-bottom: 60px;
             text-align: center;
@@ -210,7 +202,7 @@
             color: #111827;
         }
 
-        /* --- Expertise Section (Refined) --- */
+        /* --- Expertise Section --- */
         .expertise-container {
             display: flex;
             flex-direction: column;
@@ -251,14 +243,8 @@
         .expertise-card.fabric .expertise-icon-box { background: #e0f2f1; color: var(--fabric-color); }
         .expertise-card.power .expertise-icon-box { background: #f3e5f5; color: var(--power-color); }
 
-        .expertise-content {
-            flex: 1;
-        }
-
-        .expertise-content h3 {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-        }
+        .expertise-content { flex: 1; }
+        .expertise-content h3 { font-size: 1.5rem; margin-bottom: 20px; }
 
         .tech-grid {
             display: flex;
@@ -278,150 +264,209 @@
             color: var(--text-main);
         }
 
-        .tech-item i {
-            color: var(--text-muted);
+        .tech-item i { color: var(--text-muted); }
+
+        /* --- NEW PORTFOLIO TABBED SECTION --- */
+        .portfolio-tabs-container {
+            margin-bottom: 100px;
         }
 
-        /* --- Projects Horizontal Scroll (Clean Card Style) --- */
-        .projects-scroll {
+        /* The Menu (Tabs) */
+        .portfolio-menu {
             display: flex;
-            overflow-x: auto;
-            gap: 30px;
-            padding: 20px 5px 40px 5px;
-            scroll-behavior: smooth;
-            scroll-snap-type: x mandatory;
-            margin-bottom: 60px;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background: white;
+            border: 1px solid transparent;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-soft);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tab-btn:hover {
+            color: var(--text-main);
+            background: #fafafa;
+            transform: translateY(-2px);
+        }
+
+        .tab-btn.active {
+            background: var(--accent-color);
+            color: white;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
         }
         
-        /* Hide scrollbar but keep functionality */
-        .projects-scroll::-webkit-scrollbar { height: 6px; }
-        .projects-scroll::-webkit-scrollbar-thumb { background-color: #d1d5db; border-radius: 10px; }
-        .projects-scroll::-webkit-scrollbar-track { background-color: transparent; }
+        .tab-btn i { font-size: 1.1em; }
 
-        .project-card {
-            flex: 0 0 550px; /* Fixed width */
+        /* The Content Area */
+        .portfolio-content-area {
+            position: relative;
+            min-height: 500px; /* Evita saltos de altura */
+        }
+
+        /* Featured Card Style (Like the reference image) */
+        .featured-project-card {
+            display: none; /* Hidden by default */
             background: white;
             border-radius: var(--radius-lg);
             overflow: hidden;
             box-shadow: var(--shadow-soft);
-            transition: all 0.3s ease;
-            scroll-snap-align: center;
-            border: 1px solid rgba(0,0,0,0.03);
+            border: 1px solid rgba(0,0,0,0.04);
+            animation: fadeIn 0.5s ease;
+            
+            /* Grid layout for splitting text and image */
+            grid-template-columns: 1fr 1fr; 
+        }
+
+        .featured-project-card.active {
+            display: grid; /* Show when active */
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fp-text-content {
+            padding: 60px;
             display: flex;
             flex-direction: column;
+            justify-content: center;
         }
 
-        .project-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-hover);
+        .fp-logo-strip {
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .fp-product-tag {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+        
+        .fp-product-tag i {
+            font-size: 1.2rem;
+        }
+        
+        .fp-product-tag.power-apps i { color: #742774; }
+        .fp-product-tag.power-bi i { color: #F2C811; }
+        .fp-product-tag.fabric i { color: #008272; }
+
+        .fp-quote {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            line-height: 1.3;
+            color: #111827;
+            margin-bottom: 20px;
         }
 
-        .project-image {
-            height: 280px;
-            width: 100%;
-            overflow: hidden;
+        .fp-description {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .fp-meta {
+            margin-bottom: 40px;
+            font-size: 0.9rem;
+            color: var(--text-main);
+            font-weight: 500;
+        }
+
+        .fp-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn-outline {
+            padding: 12px 24px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-weight: 600;
+            color: var(--text-main);
+            background: transparent;
+            transition: all 0.2s;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--text-main);
+            background: transparent;
+        }
+
+        .btn-fill {
+            padding: 12px 24px;
+            background-color: #0067b8; /* Microsoft Blue style */
+            color: white;
+            border-radius: 8px;
+            font-weight: 600;
+            border: none;
+            transition: all 0.2s;
+        }
+
+        .btn-fill:hover {
+            background-color: #005da6;
+            transform: translateY(-2px);
+            color: white;
+        }
+
+        .fp-image {
+            background-color: #f0f0f0;
             position: relative;
+            overflow: hidden;
         }
 
-        .project-image img {
+        .fp-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.6s ease;
         }
-
-        .project-card:hover .project-image img {
-            transform: scale(1.05);
+        
+        .featured-project-card:hover .fp-image img {
+            transform: scale(1.03);
         }
 
-        .project-details {
-            padding: 30px;
+        /* --- Footer Logos --- */
+        .footer-logos {
             display: flex;
-            flex-direction: column;
-            flex: 1;
+            justify-content: center;
+            gap: 40px;
+            padding: 40px 0;
+            border-top: 1px solid #e5e7eb;
+            margin-top: 60px;
+            flex-wrap: wrap;
         }
 
-        .project-category {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--accent-color);
-            margin-bottom: 10px;
-            font-weight: 600;
+        .footer-logo {
+            height: 35px;
+            opacity: 0.6;
+            filter: grayscale(100%);
+            transition: all 0.3s;
         }
 
-        .project-title {
-            font-size: 1.4rem;
-            margin-bottom: 12px;
-            font-weight: 600;
-            color: #111827;
-        }
-
-        .project-desc {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            margin-bottom: 25px;
-            line-height: 1.6;
-            flex-grow: 1;
-        }
-
-        .project-link {
-            font-weight: 600;
-            color: #111827;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.95rem;
-        }
-
-        .project-link:hover {
-            color: var(--accent-color);
-            gap: 12px;
-        }
-
-        /* --- Notebooks Grid (Clean Minimal) --- */
-        .notebooks-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 25px;
-            margin-bottom: 100px;
-        }
-
-        .notebook-card {
-            background: white;
-            border-radius: var(--radius-md);
-            padding: 25px;
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            box-shadow: var(--shadow-soft);
-            transition: all 0.3s ease;
-            border: 1px solid transparent;
-        }
-
-        .notebook-card:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-hover);
-            border-color: rgba(59, 130, 246, 0.2);
-        }
-
-        .notebook-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 12px;
-            object-fit: cover;
-            flex-shrink: 0;
-        }
-
-        .notebook-info h4 {
-            font-size: 1.05rem;
-            margin-bottom: 4px;
-            font-weight: 600;
-        }
-
-        .notebook-info span {
-            font-size: 0.85rem;
-            color: var(--text-muted);
+        .footer-logo:hover {
+            opacity: 1;
+            filter: grayscale(0%);
         }
 
         /* --- Responsive --- */
@@ -431,24 +476,20 @@
                 text-align: center;
                 gap: 40px;
             }
+            .hero-actions { justify-content: center; }
+            .hero-visual { order: -1; }
             
-            .hero-actions {
-                justify-content: center;
+            .featured-project-card {
+                grid-template-columns: 1fr; /* Stack on mobile */
             }
-            
-            .hero-visual {
-                order: -1;
+            .fp-image {
+                height: 300px;
+                order: -1; /* Image on top */
             }
-            
-            .profile-img-container {
-                width: 300px;
-                height: 380px;
-                transform: rotate(0deg);
+            .fp-text-content {
+                padding: 30px;
             }
-
-            .project-card {
-                flex: 0 0 85vw;
-            }
+            .fp-quote { font-size: 1.4rem; }
         }
     </style>
 </head>
@@ -488,12 +529,9 @@
             </div>
 
             <div class="expertise-container">
-                
                 <!-- Microsoft Fabric Card -->
                 <div class="expertise-card fabric">
-                    <div class="expertise-icon-box">
-                        <i class='bx bx-data'></i>
-                    </div>
+                    <div class="expertise-icon-box"><i class='bx bx-data'></i></div>
                     <div class="expertise-content">
                         <h3>Microsoft Fabric</h3>
                         <div class="tech-grid">
@@ -509,9 +547,7 @@
 
                 <!-- Power Platform Card -->
                 <div class="expertise-card power">
-                    <div class="expertise-icon-box">
-                        <i class='bx bxs-component'></i>
-                    </div>
+                    <div class="expertise-icon-box"><i class='bx bxs-component'></i></div>
                     <div class="expertise-content">
                         <h3>Power Platform</h3>
                         <div class="tech-grid">
@@ -527,9 +563,7 @@
 
                 <!-- Data Science Card -->
                 <div class="expertise-card">
-                    <div class="expertise-icon-box">
-                        <i class='bx bx-code-block'></i>
-                    </div>
+                    <div class="expertise-icon-box"><i class='bx bx-code-block'></i></div>
                     <div class="expertise-content">
                         <h3>Data Science Stack</h3>
                         <div class="tech-grid">
@@ -543,133 +577,158 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </section>
 
-        <!-- PROJECTS SECTION -->
-        <section id="projects">
+        <!-- PORTFOLIO SECTION (TABBED) -->
+        <section id="portfolio">
             <div class="section-header">
                 <span class="section-tag">Portfolio</span>
-                <h2 class="section-title">Proyectos Destacados</h2>
+                <h2 class="section-title">Casos de Éxito</h2>
             </div>
 
-            <div class="projects-scroll">
+            <!-- Tab Menu -->
+            <div class="portfolio-menu">
+                <button class="tab-btn active" onclick="openProject(event, 'project-deep')"><i class='bx bx-brain'></i> Deep Learning</button>
+                <button class="tab-btn" onclick="openProject(event, 'project-powerbi')"><i class='bx bxs-bar-chart-alt-2'></i> Power BI</button>
+                <button class="tab-btn" onclick="openProject(event, 'project-nlp')"><i class='bx bx-message-detail'></i> NLP</button>
+                <button class="tab-btn" onclick="openProject(event, 'project-bigdata')"><i class='bx bx-data'></i> Big Data</button>
+            </div>
+
+            <!-- Tab Content (Cards) -->
+            <div class="portfolio-content-area">
                 
-                <!-- Project 1 -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="https://raw.githubusercontent.com/aibloy/williamsanz.github.io/master/images/DeepPeople.JPG" alt="DeepPeople">
+                <!-- Project 1: DeepPeople -->
+                <div id="project-deep" class="featured-project-card active">
+                    <div class="fp-text-content">
+                        <div class="fp-logo-strip">
+                            <div class="fp-product-tag power-apps"><i class='bx bxl-python'></i> Python</div>
+                            <div class="fp-product-tag fabric"><i class='bx bx-network-chart'></i> TensorFlow</div>
+                        </div>
+                        <div class="fp-quote">DeepPeople AI: Análisis facial inteligente en tiempo real.</div>
+                        <p class="fp-description">
+                            Aplicación web potenciada por redes neuronales convolucionales capaz de analizar rostros en tiempo real para detectar género, edad y emociones con alta precisión. Una solución innovadora para el análisis de comportamiento.
+                        </p>
+                        <div class="fp-meta">William Sanz, Científico de Datos</div>
+                        <div class="fp-actions">
+                            <a href="https://deep-people-aibloy.herokuapp.com/" target="_blank" class="btn-fill">Ver Demo</a>
+                            <a href="#" class="btn-outline">Leer historia</a>
+                        </div>
                     </div>
-                    <div class="project-details">
-                        <span class="project-category">Deep Learning / Computer Vision</span>
-                        <h3 class="project-title">DeepPeople AI</h3>
-                        <p class="project-desc">Aplicación web potenciada por redes neuronales convolucionales capaz de analizar rostros en tiempo real para detectar género, edad y emociones con alta precisión.</p>
-                        <a href="https://deep-people-aibloy.herokuapp.com/" class="project-link">Ver Aplicación <i class='bx bx-right-arrow-alt'></i></a>
-                    </div>
-                </div>
-
-                <!-- Project 2 -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="https://raw.githubusercontent.com/aibloy/williamsanz.github.io/master/images/powerbi.PNG" alt="Power BI">
-                    </div>
-                    <div class="project-details">
-                        <span class="project-category">Business Intelligence</span>
-                        <h3 class="project-title">Enterprise Dashboards Suite</h3>
-                        <p class="project-desc">Colección de cuadros de mando interactivos diseñados para la toma de decisiones estratégicas. Incluye análisis detallados de Ventas, Demografía Global y métricas de RRHH.</p>
-                        <a href="https://github.com/Aibloy/Portafolio/blob/master/Dashboard%20Ventas.pdf" class="project-link">Ver Reportes <i class='bx bx-right-arrow-alt'></i></a>
+                    <div class="fp-image">
+                        <img src="https://raw.githubusercontent.com/aibloy/williamsanz.github.io/master/images/DeepPeople.JPG" alt="DeepPeople Project">
                     </div>
                 </div>
 
-                <!-- Project 3 -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="https://raw.githubusercontent.com/aibloy/williamsanz.github.io/master/images/tfm.JPG" alt="NLP">
+                <!-- Project 2: Power BI -->
+                <div id="project-powerbi" class="featured-project-card">
+                    <div class="fp-text-content">
+                        <div class="fp-logo-strip">
+                            <div class="fp-product-tag power-bi"><i class='bx bxs-bar-chart-alt-2'></i> Power BI</div>
+                            <div class="fp-product-tag"><i class='bx bx-table'></i> Excel</div>
+                        </div>
+                        <div class="fp-quote">Enterprise Dashboards: Toma de decisiones basada en datos.</div>
+                        <p class="fp-description">
+                            Suite completa de cuadros de mando interactivos diseñados para la estrategia empresarial. Desde análisis detallados de ventas y comportamiento del consumidor hasta métricas avanzadas de Recursos Humanos y demografía global.
+                        </p>
+                        <div class="fp-meta">William Sanz, Arquitecto de Soluciones</div>
+                        <div class="fp-actions">
+                            <a href="https://github.com/Aibloy/Portafolio/blob/master/Dashboard%20Ventas.pdf" target="_blank" class="btn-fill">Ver Reportes</a>
+                            <a href="#" class="btn-outline">Leer historia</a>
+                        </div>
                     </div>
-                    <div class="project-details">
-                        <span class="project-category">NLP / Machine Learning</span>
-                        <h3 class="project-title">Personality Predictor</h3>
-                        <p class="project-desc">Modelo de Procesamiento de Lenguaje Natural (NLP) entrenado con miles de textos para perfilar la personalidad del autor (Modelo Big Five) basándose en su patrón de escritura.</p>
-                        <a href="https://github.com/Aibloy/tfm_kschool" class="project-link">Ver Código <i class='bx bx-right-arrow-alt'></i></a>
+                    <div class="fp-image">
+                        <img src="https://raw.githubusercontent.com/aibloy/williamsanz.github.io/master/images/powerbi.PNG" alt="Power BI Dashboards">
                     </div>
                 </div>
 
-                <!-- Project 4 -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="https://raw.githubusercontent.com/aibloy/williamsanz.github.io/master/images/TFG.PNG" alt="Big Data">
+                <!-- Project 3: NLP -->
+                <div id="project-nlp" class="featured-project-card">
+                    <div class="fp-text-content">
+                        <div class="fp-logo-strip">
+                            <div class="fp-product-tag power-apps"><i class='bx bx-message-detail'></i> NLP</div>
+                            <div class="fp-product-tag"><i class='bx bxl-python'></i> Python</div>
+                        </div>
+                        <div class="fp-quote">Personality Predictor: Psicometría a través del texto.</div>
+                        <p class="fp-description">
+                            Modelo avanzado de Procesamiento de Lenguaje Natural (NLP) entrenado con miles de textos para perfilar la personalidad del autor basándose en el modelo "Big Five". Una herramienta poderosa para entender perfiles psicológicos a través de la escritura.
+                        </p>
+                        <div class="fp-meta">William Sanz, Machine Learning Engineer</div>
+                        <div class="fp-actions">
+                            <a href="https://github.com/Aibloy/tfm_kschool" target="_blank" class="btn-fill">Ver Código</a>
+                            <a href="#" class="btn-outline">Leer historia</a>
+                        </div>
                     </div>
-                    <div class="project-details">
-                        <span class="project-category">Big Data Analysis</span>
-                        <h3 class="project-title">User Clustering Study</h3>
-                        <p class="project-desc">Estudio masivo de segmentación de usuarios de plataformas de citas. Clusterización de más de 68,000 perfiles analizando 2,000+ variables comportamentales utilizando lenguaje R.</p>
-                        <a href="https://github.com/Aibloy/Portafolio/blob/master/TFG%20-%20An%C3%A1lisis%20de%20datos%20con%20R.pdf" class="project-link">Leer Estudio Completo <i class='bx bx-right-arrow-alt'></i></a>
+                    <div class="fp-image">
+                        <img src="https://raw.githubusercontent.com/aibloy/williamsanz.github.io/master/images/tfm.JPG" alt="NLP Project">
+                    </div>
+                </div>
+
+                <!-- Project 4: Big Data -->
+                <div id="project-bigdata" class="featured-project-card">
+                    <div class="fp-text-content">
+                        <div class="fp-logo-strip">
+                            <div class="fp-product-tag fabric"><i class='bx bx-data'></i> R Language</div>
+                            <div class="fp-product-tag"><i class='bx bx-stats'></i> Statistics</div>
+                        </div>
+                        <div class="fp-quote">Big Data Clustering: Segmentación masiva de usuarios.</div>
+                        <p class="fp-description">
+                            Estudio analítico de gran escala sobre datos de citas online. Aplicación de algoritmos de clustering sobre 68,000 perfiles y más de 2,000 variables para descubrir patrones ocultos de comportamiento y segmentación de mercado.
+                        </p>
+                        <div class="fp-meta">William Sanz, Data Analyst</div>
+                        <div class="fp-actions">
+                            <a href="https://github.com/Aibloy/Portafolio/blob/master/TFG%20-%20An%C3%A1lisis%20de%20datos%20con%20R.pdf" target="_blank" class="btn-fill">Leer Estudio</a>
+                            <a href="#" class="btn-outline">Leer historia</a>
+                        </div>
+                    </div>
+                    <div class="fp-image">
+                        <img src="https://raw.githubusercontent.com/aibloy/williamsanz.github.io/master/images/TFG.PNG" alt="Big Data Project">
                     </div>
                 </div>
 
             </div>
         </section>
 
-        <!-- NOTEBOOKS SECTION -->
-        <section id="notebooks">
-            <div class="section-header">
-                <span class="section-tag">Investigación</span>
-                <h2 class="section-title">Notebooks & Labs</h2>
-            </div>
-
-            <div class="notebooks-grid">
-                <a href="https://nbviewer.jupyter.org/github/Aibloy/Portafolio/blob/master/Fake%20News.ipynb" class="notebook-card">
-                    <img src="https://raw.githubusercontent.com/aibloy/williamsanz.github.io/master/images/FN.PNG" class="notebook-icon" alt="Icon">
-                    <div class="notebook-info">
-                        <h4>Fake News Detector</h4>
-                        <span>NLP / Classification</span>
-                    </div>
-                </a>
-                
-                <a href="https://nbviewer.jupyter.org/github/Aibloy/Portafolio/blob/master/Gato%20o%20Perro.ipynb" class="notebook-card">
-                    <img src="https://raw.githubusercontent.com/aibloy/williamsanz.github.io/master/images/CN.png" class="notebook-icon" alt="Icon">
-                    <div class="notebook-info">
-                        <h4>Cat vs Dog AI</h4>
-                        <span>CNN / Image Recog</span>
-                    </div>
-                </a>
-
-                <a href="https://nbviewer.jupyter.org/github/Aibloy/Portafolio/blob/master/Titanic.ipynb" class="notebook-card">
-                    <img src="https://raw.githubusercontent.com/aibloy/williamsanz.github.io/master/images/titanic.png" class="notebook-icon" alt="Icon">
-                    <div class="notebook-info">
-                        <h4>Titanic Survival</h4>
-                        <span>EDA / Predictive</span>
-                    </div>
-                </a>
-
-                <a href="https://nbviewer.jupyter.org/github/Aibloy/Portafolio/blob/master/HR%20ANALYTICS%20.ipynb" class="notebook-card">
-                    <img src="https://raw.githubusercontent.com/aibloy/williamsanz.github.io/master/images/rrhh.PNG" class="notebook-icon" alt="Icon">
-                    <div class="notebook-info">
-                        <h4>HR Analytics</h4>
-                        <span>Regression / Churn</span>
-                    </div>
-                </a>
-                
-                <a href="https://nbviewer.jupyter.org/github/Aibloy/Portafolio/blob/master/Iris.ipynb" class="notebook-card">
-                    <img src="https://raw.githubusercontent.com/aibloy/williamsanz.github.io/master/images/DT.png" class="notebook-icon" alt="Icon">
-                    <div class="notebook-info">
-                        <h4>Iris Classification</h4>
-                        <span>Decision Trees</span>
-                    </div>
-                </a>
-
-                <a href="https://nbviewer.jupyter.org/github/Aibloy/Portafolio/blob/master/Segmentaci%C3%B3n%20de%20compradores.ipynb" class="notebook-card">
-                    <img src="https://raw.githubusercontent.com/aibloy/williamsanz.github.io/master/images/KM.png" class="notebook-icon" alt="Icon">
-                    <div class="notebook-info">
-                        <h4>Customer Segmentation</h4>
-                        <span>K-Means Clustering</span>
-                    </div>
-                </a>
-            </div>
-        </section>
+        <!-- FOOTER LOGOS -->
+        <div class="footer-logos">
+            <img src="https://companiesmarketcap.com/img/company-logos/256/SAN.png" class="footer-logo" alt="Santander">
+            <img src="https://ridesnparts.com/web/image/15985/Rep_Lateral_repsol_tcm14-5372.png" class="footer-logo" alt="Repsol">
+            <img src="https://logospng.org/download/inditex/inditex-256.png" class="footer-logo" alt="Inditex">
+            <img src="https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/256x256/6ab5010e949df2892e9819736f38f510" class="footer-logo" alt="Iberdrola">
+            <img src="https://companiesmarketcap.com/img/company-logos/256/TEF.png" class="footer-logo" alt="Telefonica">
+            <img src="https://upload.wikimedia.org/wikipedia/en/5/55/Neom_City_Logo.svg" class="footer-logo" alt="NEOM">
+        </div>
 
     </div>
+
+    <!-- Script for Tabs -->
+    <script>
+        function openProject(evt, projectId) {
+            // 1. Hide all project cards
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("featured-project-card");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+                tabcontent[i].classList.remove("active");
+            }
+
+            // 2. Remove "active" class from all tab buttons
+            tablinks = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+
+            // 3. Show the current project card and add "active" class to the button
+            var selectedProject = document.getElementById(projectId);
+            selectedProject.style.display = "grid";
+            // Small timeout to allow display:grid to apply before adding opacity class for transition
+            setTimeout(() => {
+                selectedProject.classList.add("active");
+            }, 10);
+            
+            evt.currentTarget.className += " active";
+        }
+    </script>
 
 </body>
 </html>
