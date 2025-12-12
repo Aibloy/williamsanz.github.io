@@ -12,9 +12,9 @@
 
     <style>
         :root {
-            --bg-color: #f8fafc; /* Fondo aun más limpio */
+            --bg-color: #f8fafc;
             --card-bg: #ffffff;
-            --text-main: #0f172a; /* Azul oscuro casi negro */
+            --text-main: #0f172a;
             --text-muted: #64748b;
             --accent-color: #3b82f6;
             --accent-light: #eff6ff;
@@ -25,7 +25,7 @@
             --radius-full: 9999px;
             --fabric-color: #008272;
             --power-color: #742774;
-            --other-color: #6366f1; /* Indigo para otros */
+            --other-color: #6366f1;
         }
 
         * {
@@ -57,7 +57,7 @@
 
         /* --- Layout --- */
         .container {
-            max-width: 1100px; /* Un poco más estrecho para lectura */
+            max-width: 1100px;
             margin: 0 auto;
             padding: 60px 24px;
         }
@@ -168,7 +168,7 @@
         /* --- Section Titles --- */
         .section-header {
             margin-bottom: 40px;
-            text-align: left; /* Alineado a la izquierda para variedad */
+            text-align: left;
             border-left: 4px solid var(--accent-color);
             padding-left: 16px;
         }
@@ -179,90 +179,145 @@
             margin: 0;
         }
 
-        /* --- Expertise Section (Segmented) --- */
-        .expertise-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 32px;
+        /* --- Expertise Section (Tabbed) --- */
+        .expertise-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
             margin-bottom: 100px;
         }
+
+        /* Expertise Menu (Tabs) */
+        .expertise-menu {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        /* Reuse tab style logic, specific class for expertise tabs if needed */
+        .exp-tab-btn {
+            padding: 10px 24px;
+            border-radius: var(--radius-full);
+            background: white;
+            border: 1px solid #e2e8f0;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .exp-tab-btn:hover {
+            background: #f8fafc;
+            transform: translateY(-2px);
+        }
+
+        .exp-tab-btn.active {
+            background: var(--text-main);
+            color: white;
+            border-color: var(--text-main);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .expertise-content-area {
+            min-height: 400px;
+        }
+
+        .expertise-card-panel {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+        
+        .expertise-card-panel.active { display: block; }
 
         .expertise-col {
             display: flex;
             flex-direction: column;
             gap: 20px;
+            background: white;
+            padding: 32px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-soft);
+            border: 1px solid #f1f5f9;
         }
 
         .expertise-header-card {
-            background: white;
-            border-radius: var(--radius-lg);
-            padding: 24px;
-            box-shadow: var(--shadow-soft);
-            border: 1px solid #f1f5f9;
             display: flex;
             align-items: center;
             gap: 16px;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #f1f5f9;
         }
 
-        .expertise-header-card.fabric { border-top: 4px solid var(--fabric-color); }
-        .expertise-header-card.power { border-top: 4px solid var(--power-color); }
-        .expertise-header-card.other { border-top: 4px solid var(--other-color); }
+        /* Header accents */
+        .fabric .expertise-header-card { border-bottom-color: var(--fabric-color); }
+        .power .expertise-header-card { border-bottom-color: var(--power-color); }
+        .other .expertise-header-card { border-bottom-color: var(--other-color); }
 
         .eh-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 10px;
+            width: 56px;
+            height: 56px;
+            border-radius: 12px;
             background: #f8fafc;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 24px;
+            font-size: 28px;
         }
         
-        .eh-icon img { width: 32px; height: 32px; object-fit: contain; }
+        .eh-icon img { width: 36px; height: 36px; object-fit: contain; }
         
-        .eh-title h3 { font-size: 1.1rem; margin: 0; font-weight: 600; }
-        .eh-title span { font-size: 0.85rem; color: var(--text-muted); }
+        .eh-title h3 { font-size: 1.25rem; margin: 0; font-weight: 600; }
+        .eh-title span { font-size: 0.9rem; color: var(--text-muted); }
 
-        .tech-list {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
+        .tech-list-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 16px;
         }
 
         .tech-item-card {
-            background: white;
+            background: #fcfcfc;
             border-radius: var(--radius-md);
             padding: 16px;
             border: 1px solid #f1f5f9;
-            box-shadow: var(--shadow-soft);
             transition: transform 0.2s;
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             gap: 12px;
         }
 
         .tech-item-card:hover {
-            transform: translateX(4px);
+            transform: translateY(-2px);
             border-color: #e2e8f0;
+            background: white;
+            box-shadow: var(--shadow-soft);
         }
 
         .ti-icon {
             font-size: 1.25rem;
             color: var(--text-muted);
-            width: 32px;
-            height: 32px;
-            background: #f8fafc;
+            width: 36px;
+            height: 36px;
+            background: white;
             border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
+            border: 1px solid #f1f5f9;
+            flex-shrink: 0;
         }
         
-        .ti-icon img { width: 20px; height: 20px; object-fit: contain; }
+        .ti-icon img { width: 22px; height: 22px; object-fit: contain; }
 
-        .ti-content h5 { font-size: 0.95rem; margin: 0; font-weight: 600; }
-        .ti-content p { font-size: 0.8rem; margin: 2px 0 0; color: var(--text-muted); line-height: 1.4; }
+        .ti-content h5 { font-size: 0.95rem; margin: 0 0 4px 0; font-weight: 600; color: var(--text-main); }
+        .ti-content p { font-size: 0.85rem; margin: 0; color: var(--text-muted); line-height: 1.4; }
 
         /* --- Trajectory Section (Tabs + Scroll) --- */
         #trajectory {
@@ -275,10 +330,11 @@
             margin-bottom: 24px;
             overflow-x: auto;
             padding-bottom: 4px;
+            justify-content: center; /* Center tabs */
         }
 
         .traj-tab {
-            padding: 10px 20px;
+            padding: 10px 24px;
             border-radius: var(--radius-full);
             background: white;
             border: 1px solid #e2e8f0;
@@ -343,11 +399,40 @@
         .t-desc { font-size: 0.9rem; color: #475569; }
         .t-desc ul { padding-left: 20px; margin-top: 8px; }
 
+        /* Certs Grid */
+        .certs-grid-panel {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .cert-card-item {
+            background: #f8fafc;
+            padding: 24px;
+            border-radius: var(--radius-md);
+            border: 1px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            transition: all 0.2s;
+        }
+        .cert-card-item:hover {
+            background: white;
+            box-shadow: var(--shadow-soft);
+            border-color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+        .cert-img { width: 64px; height: 64px; object-fit: contain; }
+        .cert-details h6 { font-size: 1rem; margin: 0 0 4px; font-weight: 600; color: var(--text-main); }
+        .cert-details span { font-size: 0.85rem; color: var(--text-muted); }
+
+
         /* --- Portfolio (Horizontal Scroll Cards) --- */
         #portfolio { margin-bottom: 100px; }
         
-        .pf-tabs { /* Reusing trajectory tabs style logic */
+        .pf-tabs {
             display: flex; gap: 8px; margin-bottom: 24px; overflow-x: auto; 
+            justify-content: center; /* Center tabs */
         }
 
         .pf-display {
@@ -433,7 +518,7 @@
         <!-- HERO MINIMALIST -->
         <section class="hero">
             <div class="profile-img-minimal">
-                <img src="https://raw.githubusercontent.com/aibloy/williamsanz.github.io/master/images/nieve.png" alt="William Sanz">
+                <img src="https://raw.githubusercontent.com/aibloy/williamsanz.github.io/master/images/nieve.png" alt="">
             </div>
             
             <span class="hero-role">Data Scientist & Solutions Architect</span>
@@ -460,132 +545,152 @@
             </p>
         </section>
 
-        <!-- EXPERTISE (SEGMENTED) -->
+        <!-- EXPERTISE (SEGMENTED with TABS) -->
         <section id="expertise">
             <div class="section-header">
                 <h2 class="section-title">Areas de Expertise</h2>
             </div>
 
-            <div class="expertise-grid">
+            <!-- Expertise Tab Menu -->
+            <div class="expertise-menu">
+                <button class="exp-tab-btn active" onclick="switchExpertise(event, 'exp-fabric')">
+                    <i class='bx bx-data'></i> Microsoft Fabric
+                </button>
+                <button class="exp-tab-btn" onclick="switchExpertise(event, 'exp-power')">
+                    <i class='bx bxs-component'></i> Power Platform
+                </button>
+                <button class="exp-tab-btn" onclick="switchExpertise(event, 'exp-other')">
+                    <i class='bx bx-code-block'></i> Other Skills
+                </button>
+            </div>
+
+            <!-- Expertise Panels -->
+            <div class="expertise-content-area">
                 
-                <!-- COLUMN 1: Microsoft Fabric -->
-                <div class="expertise-col">
-                    <div class="expertise-header-card fabric">
-                        <div class="eh-icon"><img src="https://img.icons8.com/?size=100&id=lKbnjQU15asE&format=png&color=000000" alt="Fabric"></div>
-                        <div class="eh-title">
-                            <h3>Microsoft Fabric</h3>
-                            <span>Data Intelligence Platform</span>
-                        </div>
-                    </div>
-                    <div class="tech-list">
-                        <div class="tech-item-card">
-                            <div class="ti-icon"><i class='bx bx-cylinder'></i></div>
-                            <div class="ti-content">
-                                <h5>Data Factory</h5>
-                                <p>Pipelines de orquestación ETL/ELT y Dataflows Gen2.</p>
+                <!-- PANEL 1: Microsoft Fabric -->
+                <div id="exp-fabric" class="expertise-card-panel fabric active">
+                    <div class="expertise-col">
+                        <div class="expertise-header-card fabric">
+                            <div class="eh-icon"><img src="https://github.com/Aibloy/williamsanz.github.io/blob/master/images/fabric.svg" alt="Fabric"></div>
+                            <div class="eh-title">
+                                <h3>Microsoft Fabric</h3>
+                                <span>Data Intelligence Platform</span>
                             </div>
                         </div>
-                        <div class="tech-item-card">
-                            <div class="ti-icon"><i class='bx bx-code-alt'></i></div>
-                            <div class="ti-content">
-                                <h5>Data Engineering</h5>
-                                <p>Lakehouse architecture, Spark Notebooks & Delta Tables.</p>
+                        <div class="tech-list-grid">
+                            <div class="tech-item-card">
+                                <div class="ti-icon"><i class='bx bx-cylinder'></i></div>
+                                <div class="ti-content">
+                                    <h5>Data Factory</h5>
+                                    <p>Pipelines de orquestación ETL/ELT y Dataflows Gen2.</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="tech-item-card">
-                            <div class="ti-icon"><i class='bx bxs-data'></i></div>
-                            <div class="ti-content">
-                                <h5>Data Warehouse</h5>
-                                <p>Consultas T-SQL de alto rendimiento para analítica empresarial.</p>
+                            <div class="tech-item-card">
+                                <div class="ti-icon"><i class='bx bx-code-alt'></i></div>
+                                <div class="ti-content">
+                                    <h5>Data Engineering</h5>
+                                    <p>Lakehouse architecture, Spark Notebooks & Delta Tables.</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="tech-item-card">
-                            <div class="ti-icon"><i class='bx bxs-bar-chart-alt-2'></i></div>
-                            <div class="ti-content">
-                                <h5>Power BI Advanced</h5>
-                                <p>Modelado semántico, DAX complejo y reportes paginados.</p>
+                            <div class="tech-item-card">
+                                <div class="ti-icon"><i class='bx bxs-data'></i></div>
+                                <div class="ti-content">
+                                    <h5>Data Warehouse</h5>
+                                    <p>Consultas T-SQL de alto rendimiento para analítica empresarial.</p>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- COLUMN 2: Power Platform -->
-                <div class="expertise-col">
-                    <div class="expertise-header-card power">
-                        <div class="eh-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Microsoft_Power_Platform_logo.svg/1024px-Microsoft_Power_Platform_logo.svg.png" alt="Power"></div>
-                        <div class="eh-title">
-                            <h3>Power Platform</h3>
-                            <span>Low-Code Automation</span>
-                        </div>
-                    </div>
-                    <div class="tech-list">
-                        <div class="tech-item-card">
-                            <div class="ti-icon"><i class='bx bx-mobile-alt'></i></div>
-                            <div class="ti-content">
-                                <h5>Canvas Apps</h5>
-                                <p>Desarrollo de apps pixel-perfect con alto rendimiento.</p>
-                            </div>
-                        </div>
-                        <div class="tech-item-card">
-                            <div class="ti-icon"><i class='bx bx-git-merge'></i></div>
-                            <div class="ti-content">
-                                <h5>Power Automate</h5>
-                                <p>Flujos cloud complejos e integraciones con SAP (RFC).</p>
-                            </div>
-                        </div>
-                        <div class="tech-item-card">
-                            <div class="ti-icon"><i class='bx bx-data'></i></div>
-                            <div class="ti-content">
-                                <h5>Dataverse</h5>
-                                <p>Modelado de datos relacional y seguridad RBAC.</p>
-                            </div>
-                        </div>
-                        <div class="tech-item-card">
-                            <div class="ti-icon"><i class='bx bx-bot'></i></div>
-                            <div class="ti-content">
-                                <h5>AI Builder</h5>
-                                <p>Procesamiento inteligente de documentos (IDP).</p>
+                            <div class="tech-item-card">
+                                <div class="ti-icon"><i class='bx bxs-bar-chart-alt-2'></i></div>
+                                <div class="ti-content">
+                                    <h5>Power BI Advanced</h5>
+                                    <p>Modelado semántico, DAX complejo y reportes paginados.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- COLUMN 3: Other Skills -->
-                <div class="expertise-col">
-                    <div class="expertise-header-card other">
-                        <div class="eh-icon"><i class='bx bx-code-block'></i></div>
-                        <div class="eh-title">
-                            <h3>Other Skills</h3>
-                            <span>Data Science & Cloud</span>
+                <!-- PANEL 2: Power Platform -->
+                <div id="exp-power" class="expertise-card-panel power">
+                    <div class="expertise-col">
+                        <div class="expertise-header-card power">
+                            <div class="eh-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Microsoft_Power_Platform_logo.svg/1024px-Microsoft_Power_Platform_logo.svg.png" alt="Power"></div>
+                            <div class="eh-title">
+                                <h3>Power Platform</h3>
+                                <span>Low-Code Automation</span>
+                            </div>
+                        </div>
+                        <div class="tech-list-grid">
+                            <div class="tech-item-card">
+                                <div class="ti-icon"><i class='bx bx-mobile-alt'></i></div>
+                                <div class="ti-content">
+                                    <h5>Canvas Apps</h5>
+                                    <p>Desarrollo de apps pixel-perfect con alto rendimiento.</p>
+                                </div>
+                            </div>
+                            <div class="tech-item-card">
+                                <div class="ti-icon"><i class='bx bx-git-merge'></i></div>
+                                <div class="ti-content">
+                                    <h5>Power Automate</h5>
+                                    <p>Flujos cloud complejos e integraciones con SAP (RFC).</p>
+                                </div>
+                            </div>
+                            <div class="tech-item-card">
+                                <div class="ti-icon"><i class='bx bx-data'></i></div>
+                                <div class="ti-content">
+                                    <h5>Dataverse</h5>
+                                    <p>Modelado de datos relacional y seguridad RBAC.</p>
+                                </div>
+                            </div>
+                            <div class="tech-item-card">
+                                <div class="ti-icon"><i class='bx bx-bot'></i></div>
+                                <div class="ti-content">
+                                    <h5>AI Builder</h5>
+                                    <p>Procesamiento inteligente de documentos (IDP).</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="tech-list">
-                        <div class="tech-item-card">
-                            <div class="ti-icon"><i class='bx bxl-python'></i></div>
-                            <div class="ti-content">
-                                <h5>Python & PySpark</h5>
-                                <p>Scripting, análisis de datos y Azure Functions.</p>
+                </div>
+
+                <!-- PANEL 3: Other Skills -->
+                <div id="exp-other" class="expertise-card-panel other">
+                    <div class="expertise-col">
+                        <div class="expertise-header-card other">
+                            <div class="eh-icon"><i class='bx bx-code-block'></i></div>
+                            <div class="eh-title">
+                                <h3>Other Skills</h3>
+                                <span>Data Science & Cloud</span>
                             </div>
                         </div>
-                        <div class="tech-item-card">
-                            <div class="ti-icon"><i class='bx bx-brain'></i></div>
-                            <div class="ti-content">
-                                <h5>Machine Learning</h5>
-                                <p>Scikit-learn, TensorFlow y modelos predictivos.</p>
+                        <div class="tech-list-grid">
+                            <div class="tech-item-card">
+                                <div class="ti-icon"><i class='bx bxl-python'></i></div>
+                                <div class="ti-content">
+                                    <h5>Python & PySpark</h5>
+                                    <p>Scripting, análisis de datos y Azure Functions.</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="tech-item-card">
-                            <div class="ti-icon"><i class='bx bx-table'></i></div>
-                            <div class="ti-content">
-                                <h5>SQL & Databases</h5>
-                                <p>Consultas complejas y optimización de bases de datos.</p>
+                            <div class="tech-item-card">
+                                <div class="ti-icon"><i class='bx bx-brain'></i></div>
+                                <div class="ti-content">
+                                    <h5>Machine Learning</h5>
+                                    <p>Scikit-learn, TensorFlow y modelos predictivos.</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="tech-item-card">
-                            <div class="ti-icon"><i class='bx bx-stats'></i></div>
-                            <div class="ti-content">
-                                <h5>R Language</h5>
-                                <p>Análisis estadístico y clustering avanzado.</p>
+                            <div class="tech-item-card">
+                                <div class="ti-icon"><i class='bx bx-table'></i></div>
+                                <div class="ti-content">
+                                    <h5>SQL & Databases</h5>
+                                    <p>Consultas complejas y optimización de bases de datos.</p>
+                                </div>
+                            </div>
+                            <div class="tech-item-card">
+                                <div class="ti-icon"><i class='bx bx-stats'></i></div>
+                                <div class="ti-content">
+                                    <h5>R Language</h5>
+                                    <p>Análisis estadístico y clustering avanzado.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -690,26 +795,29 @@
 
                 <!-- Certs Panel -->
                 <div id="t-cert" class="traj-panel">
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px;">
-                        <div class="tech-item-card">
-                            <div class="ti-icon"><i class='bx bx-award'></i></div>
-                            <div class="ti-content">
-                                <h5>Solutions Architect Expert</h5>
-                                <p>Microsoft Certified</p>
+                    <div class="certs-grid-panel">
+                        <!-- Architect -->
+                        <div class="cert-card-item">
+                            <img src="https://images.credly.com/images/72eb3ccc-c40c-4e41-84b1-689e58af16f9/power-platform-solutions-architect-expert-600x600.png" class="cert-img" alt="Architect">
+                            <div class="cert-details">
+                                <h6>Solutions Architect Expert</h6>
+                                <span>Microsoft Certified</span>
                             </div>
                         </div>
-                        <div class="tech-item-card">
-                            <div class="ti-icon"><i class='bx bx-badge-check'></i></div>
-                            <div class="ti-content">
-                                <h5>Power Platform Consultant</h5>
-                                <p>PL-200 Certified</p>
+                        <!-- Consultant -->
+                        <div class="cert-card-item">
+                            <img src="https://images.credly.com/images/243ab956-2af5-4abd-8b91-27bc580f17ae/power-platform-functional-consultant-600x600__1_.png" class="cert-img" alt="Consultant">
+                            <div class="cert-details">
+                                <h6>Power Platform Consultant</h6>
+                                <span>PL-200 Certified</span>
                             </div>
                         </div>
-                        <div class="tech-item-card">
-                            <div class="ti-icon"><i class='bx bx-bar-chart'></i></div>
-                            <div class="ti-content">
-                                <h5>Power BI Data Analyst</h5>
-                                <p>PL-300 Certified</p>
+                        <!-- Data Analyst -->
+                        <div class="cert-card-item">
+                            <img src="https://images.credly.com/images/619f60f8-4f63-4772-910e-dc31c6f2f7e8/image.png" class="cert-img" alt="Data Analyst">
+                            <div class="cert-details">
+                                <h6>Power BI Data Analyst</h6>
+                                <span>PL-300 Certified</span>
                             </div>
                         </div>
                     </div>
@@ -833,6 +941,7 @@
         // Wrapper functions for specific sections
         function switchTraj(evt, id) { switchTab(evt, id, 'traj-tab', 'traj-panel'); }
         function switchPf(evt, id) { switchTab(evt, id, 'traj-tab', 'pf-card'); } // Reusing traj-tab class style for pf tabs if desired, or create separate class
+        function switchExpertise(evt, id) { switchTab(evt, id, 'exp-tab-btn', 'expertise-card-panel'); }
     </script>
 
 </body>
