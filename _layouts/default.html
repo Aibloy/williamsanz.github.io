@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -184,7 +184,7 @@
             display: flex;
             flex-direction: column;
             gap: 20px;
-            margin-bottom: 100px;
+            /* margin-bottom handled by trajectory margin-top */
         }
 
         /* Expertise Menu (Tabs) */
@@ -196,7 +196,6 @@
             flex-wrap: wrap;
         }
 
-        /* Reuse tab style logic, specific class for expertise tabs if needed */
         .exp-tab-btn {
             padding: 10px 24px;
             border-radius: var(--radius-full);
@@ -222,6 +221,12 @@
             color: white;
             border-color: var(--text-main);
             box-shadow: var(--shadow-soft);
+        }
+        
+        .exp-tab-icon {
+            width: 20px;
+            height: 20px;
+            object-fit: contain;
         }
 
         .expertise-content-area {
@@ -321,6 +326,7 @@
 
         /* --- Trajectory Section (Tabs + Scroll) --- */
         #trajectory {
+            margin-top: 140px; /* Increased separation as requested */
             margin-bottom: 100px;
         }
 
@@ -428,7 +434,7 @@
 
 
         /* --- Portfolio (Horizontal Scroll Cards) --- */
-        #portfolio { margin-bottom: 100px; }
+        #portfolio { margin-bottom: 100px; margin-top: 100px; }
         
         .pf-tabs {
             display: flex; gap: 8px; margin-bottom: 24px; overflow-x: auto; 
@@ -523,38 +529,39 @@
             
             <span class="hero-role">Data Scientist & Solutions Architect</span>
             <h1>William Sanz Vivanco</h1>
-            <p>Especialista en transformar datos complejos en soluciones de negocio tangibles mediante Inteligencia Artificial y Arquitectura Cloud.</p>
+            <p>Specialist in transforming complex data into tangible business solutions through Artificial Intelligence and Cloud Architecture.</p>
             
             <div class="social-links-minimal">
                 <a href="mailto:williamvivanco@hotmail.es" class="social-btn" title="Email"><i class='bx bx-envelope'></i></a>
                 <a href="https://www.linkedin.com/in/williamsanzvivanco/" class="social-btn" title="LinkedIn"><i class='bx bxl-linkedin'></i></a>
                 <a href="https://github.com/aibloy" class="social-btn" title="GitHub"><i class='bx bxl-github'></i></a>
-                <!-- Icono de Upwork (simulado con icono de maletín o globo si no hay específico en boxicons, o imagen externa) -->
+                <!-- Icono de Upwork -->
                 <a href="#" class="social-btn" title="Upwork"><i class='bx bxl-upwork'></i></a> 
             </div>
         </section>
 
         <!-- PROFESSIONAL SUMMARY -->
         <section class="summary-section">
-            <h2 class="summary-title">Resumen Profesional</h2>
+            <h2 class="summary-title">Professional Summary</h2>
             <p class="summary-text">
-                Consultor Senior con amplia experiencia internacional en el diseño e implementación de soluciones de datos end-to-end. 
-                Especializado en la convergencia entre <strong>Ingeniería de Datos</strong>, <strong>Automatización Inteligente</strong> y 
-                <strong>Analítica Avanzada</strong>. Mi enfoque combina rigor técnico con visión de negocio para entregar arquitecturas escalables 
-                en ecosistemas Microsoft (Azure, Fabric, Power Platform).
+                Senior Consultant with extensive international experience in designing and implementing end-to-end data solutions.
+                Specialized in the convergence of <strong>Data Engineering</strong>, <strong>Intelligent Automation</strong>, and
+                <strong>Advanced Analytics</strong>. My approach combines technical rigor with business vision to deliver scalable architectures
+                within Microsoft ecosystems (Azure, Fabric, Power Platform).
             </p>
         </section>
 
         <!-- EXPERTISE (SEGMENTED with TABS) -->
         <section id="expertise">
             <div class="section-header">
-                <h2 class="section-title">Areas de Expertise</h2>
+                <h2 class="section-title">Areas of Expertise</h2>
             </div>
 
-            <!-- Expertise Tab Menu -->
+            <!-- Expertise Tab Menu with Icons -->
             <div class="expertise-menu">
                 <button class="exp-tab-btn active" onclick="switchExpertise(event, 'exp-fabric')">
-                    <i class='bx bx-data'></i> Microsoft Fabric
+                    <!-- Microsoft Fabric Icon within Button -->
+                    <img src="https://raw.githubusercontent.com/Aibloy/williamsanz.github.io/refs/heads/master/images/fabric.svg" class="exp-tab-icon" alt="Fabric"> Microsoft Fabric
                 </button>
                 <button class="exp-tab-btn" onclick="switchExpertise(event, 'exp-power')">
                     <i class='bx bxs-component'></i> Power Platform
@@ -571,7 +578,7 @@
                 <div id="exp-fabric" class="expertise-card-panel fabric active">
                     <div class="expertise-col">
                         <div class="expertise-header-card fabric">
-                            <div class="eh-icon"><img src="https://raw.githubusercontent.com/Aibloy/williamsanz.github.io/refs/heads/master/images/fabric.svg" alt="Fabric"></div>
+                            <div class="eh-icon"><img src="https://img.icons8.com/?size=100&id=lKbnjQU15asE&format=png&color=000000" alt="Fabric"></div>
                             <div class="eh-title">
                                 <h3>Microsoft Fabric</h3>
                                 <span>Data Intelligence Platform</span>
@@ -582,7 +589,7 @@
                                 <div class="ti-icon"><i class='bx bx-cylinder'></i></div>
                                 <div class="ti-content">
                                     <h5>Data Factory</h5>
-                                    <p>Pipelines de orquestación ETL/ELT y Dataflows Gen2.</p>
+                                    <p>ETL/ELT orchestration pipelines and Dataflows Gen2.</p>
                                 </div>
                             </div>
                             <div class="tech-item-card">
@@ -596,14 +603,14 @@
                                 <div class="ti-icon"><i class='bx bxs-data'></i></div>
                                 <div class="ti-content">
                                     <h5>Data Warehouse</h5>
-                                    <p>Consultas T-SQL de alto rendimiento para analítica empresarial.</p>
+                                    <p>High-performance T-SQL queries for enterprise analytics.</p>
                                 </div>
                             </div>
                             <div class="tech-item-card">
                                 <div class="ti-icon"><i class='bx bxs-bar-chart-alt-2'></i></div>
                                 <div class="ti-content">
                                     <h5>Power BI Advanced</h5>
-                                    <p>Modelado semántico, DAX complejo y reportes paginados.</p>
+                                    <p>Semantic modeling, complex DAX, and paginated reports.</p>
                                 </div>
                             </div>
                         </div>
@@ -625,28 +632,31 @@
                                 <div class="ti-icon"><i class='bx bx-mobile-alt'></i></div>
                                 <div class="ti-content">
                                     <h5>Canvas Apps</h5>
-                                    <p>Desarrollo de apps pixel-perfect con alto rendimiento.</p>
+                                    <p>Pixel-perfect app development with high performance.</p>
                                 </div>
                             </div>
                             <div class="tech-item-card">
-                                <div class="ti-icon"><i class='bx bx-git-merge'></i></div>
+                                <div class="ti-icon">
+                                    <!-- Updated Power Automate Icon URL -->
+                                    <img src="https://raw.githubusercontent.com/Aibloy/williamsanz.github.io/refs/heads/master/images/PowerAutomate_scalable.svg" alt="Power Automate">
+                                </div>
                                 <div class="ti-content">
                                     <h5>Power Automate</h5>
-                                    <p>Flujos cloud complejos e integraciones con SAP (RFC).</p>
+                                    <p>Complex cloud flows and SAP integrations (RFC).</p>
                                 </div>
                             </div>
                             <div class="tech-item-card">
                                 <div class="ti-icon"><i class='bx bx-data'></i></div>
                                 <div class="ti-content">
                                     <h5>Dataverse</h5>
-                                    <p>Modelado de datos relacional y seguridad RBAC.</p>
+                                    <p>Relational data modeling and RBAC security.</p>
                                 </div>
                             </div>
                             <div class="tech-item-card">
                                 <div class="ti-icon"><i class='bx bx-bot'></i></div>
                                 <div class="ti-content">
                                     <h5>AI Builder</h5>
-                                    <p>Procesamiento inteligente de documentos (IDP).</p>
+                                    <p>Intelligent document processing (IDP).</p>
                                 </div>
                             </div>
                         </div>
@@ -668,28 +678,28 @@
                                 <div class="ti-icon"><i class='bx bxl-python'></i></div>
                                 <div class="ti-content">
                                     <h5>Python & PySpark</h5>
-                                    <p>Scripting, análisis de datos y Azure Functions.</p>
+                                    <p>Scripting, data analysis, and Azure Functions.</p>
                                 </div>
                             </div>
                             <div class="tech-item-card">
                                 <div class="ti-icon"><i class='bx bx-brain'></i></div>
                                 <div class="ti-content">
                                     <h5>Machine Learning</h5>
-                                    <p>Scikit-learn, TensorFlow y modelos predictivos.</p>
+                                    <p>Scikit-learn, TensorFlow, and predictive models.</p>
                                 </div>
                             </div>
                             <div class="tech-item-card">
                                 <div class="ti-icon"><i class='bx bx-table'></i></div>
                                 <div class="ti-content">
                                     <h5>SQL & Databases</h5>
-                                    <p>Consultas complejas y optimización de bases de datos.</p>
+                                    <p>Complex queries and database optimization.</p>
                                 </div>
                             </div>
                             <div class="tech-item-card">
                                 <div class="ti-icon"><i class='bx bx-stats'></i></div>
                                 <div class="ti-content">
                                     <h5>R Language</h5>
-                                    <p>Análisis estadístico y clustering avanzado.</p>
+                                    <p>Statistical analysis and advanced clustering.</p>
                                 </div>
                             </div>
                         </div>
@@ -702,13 +712,13 @@
         <!-- TRAJECTORY (TABS + SCROLL) -->
         <section id="trajectory">
             <div class="section-header">
-                <h2 class="section-title">Trayectoria Profesional</h2>
+                <h2 class="section-title">Professional Trajectory</h2>
             </div>
 
             <div class="trajectory-tabs">
-                <button class="traj-tab active" onclick="switchTraj(event, 't-exp')">Experiencia</button>
-                <button class="traj-tab" onclick="switchTraj(event, 't-edu')">Estudios</button>
-                <button class="traj-tab" onclick="switchTraj(event, 't-cert')">Certificaciones</button>
+                <button class="traj-tab active" onclick="switchTraj(event, 't-exp')">Experience</button>
+                <button class="traj-tab" onclick="switchTraj(event, 't-edu')">Education</button>
+                <button class="traj-tab" onclick="switchTraj(event, 't-cert')">Certifications</button>
             </div>
 
             <div class="traj-content">
@@ -717,56 +727,56 @@
                 <div id="t-exp" class="traj-panel active">
                     <div class="timeline-box">
                         <div class="timeline-marker"></div>
-                        <span class="t-date">2024 - Presente</span>
+                        <span class="t-date">2024 - Present</span>
                         <h3 class="t-role">Freelance Power Platform Consultant</h3>
                         <h4 class="t-company">Upwork (Global)</h4>
                         <div class="t-desc">
-                            Desarrollo end-to-end de soluciones empresariales.
+                            End-to-end development of enterprise solutions.
                             <ul>
-                                <li>Creación de +20 aplicaciones Canvas personalizadas.</li>
-                                <li>Integración compleja con SAP (RFCs).</li>
-                                <li>Migración de reporting Qlik Sense a Microsoft Fabric.</li>
+                                <li>Creation of 20+ custom Canvas applications.</li>
+                                <li>Complex integration with SAP (RFCs).</li>
+                                <li>Migration of Qlik Sense reporting to Microsoft Fabric.</li>
                             </ul>
                         </div>
                     </div>
                     <div class="timeline-box">
                         <div class="timeline-marker"></div>
                         <span class="t-date">2023 - 2025</span>
-                        <h3 class="t-role">Consultor Power Platform</h3>
-                        <h4 class="t-company">NEOM (Arabia Saudí)</h4>
+                        <h3 class="t-role">Power Platform Consultant</h3>
+                        <h4 class="t-company">NEOM (Saudi Arabia)</h4>
                         <div class="t-desc">
-                            Proyecto de infraestructura a gran escala.
+                            Large-scale infrastructure project.
                             <ul>
-                                <li>Desarrollo de apps para procesos internos y PMO con SharePoint.</li>
-                                <li>Modelos AI Builder para gestión documental.</li>
+                                <li>Development of apps for internal processes and PMO with SharePoint.</li>
+                                <li>AI Builder models for document management.</li>
                             </ul>
                         </div>
                     </div>
                     <div class="timeline-box">
                         <div class="timeline-marker"></div>
                         <span class="t-date">2022</span>
-                        <h3 class="t-role">Consultor Senior / Arquitecto</h3>
+                        <h3 class="t-role">Senior Consultant / Architect</h3>
                         <h4 class="t-company">Raona</h4>
                         <div class="t-desc">
-                            Liderazgo técnico, optimización de rendimiento y mentoring.
+                            Technical leadership, performance optimization, and mentoring.
                         </div>
                     </div>
                     <div class="timeline-box">
                         <div class="timeline-marker"></div>
                         <span class="t-date">2021 - 2022</span>
-                        <h3 class="t-role">Consultor Power Platform</h3>
-                        <h4 class="t-company">Kabel Systems (Cliente: Repsol)</h4>
+                        <h3 class="t-role">Power Platform Consultant</h3>
+                        <h4 class="t-company">Kabel Systems (Client: Repsol)</h4>
                         <div class="t-desc">
-                            Sistema de ingesta documental con Azure Cognitive Services.
+                            Document ingestion system with Azure Cognitive Services.
                         </div>
                     </div>
                     <div class="timeline-box">
                         <div class="timeline-marker"></div>
                         <span class="t-date">2020 - 2021</span>
-                        <h3 class="t-role">Consultor Power Platform</h3>
+                        <h3 class="t-role">Power Platform Consultant</h3>
                         <h4 class="t-company">Everis / NTT Data</h4>
                         <div class="t-desc">
-                            Desarrollo de soluciones Dataverse y Canvas Apps.
+                            Development of Dataverse and Canvas Apps solutions.
                         </div>
                     </div>
                 </div>
@@ -776,19 +786,19 @@
                     <div class="timeline-box">
                         <div class="timeline-marker"></div>
                         <span class="t-date">2019 - 2020</span>
-                        <h3 class="t-role">Máster en Ciencia de Datos</h3>
+                        <h3 class="t-role">Master in Data Science</h3>
                         <h4 class="t-company">KSchool</h4>
                         <div class="t-desc">
-                            Machine Learning, Big Data y Analytics. TFM en NLP.
+                            Machine Learning, Big Data, and Analytics. Master's Thesis in NLP.
                         </div>
                     </div>
                     <div class="timeline-box">
                         <div class="timeline-marker"></div>
                         <span class="t-date">2015 - 2019</span>
-                        <h3 class="t-role">Grado en Psicología</h3>
-                        <h4 class="t-company">Universidad Complutense de Madrid</h4>
+                        <h3 class="t-role">Bachelor's Degree in Psychology</h3>
+                        <h4 class="t-company">Complutense University of Madrid</h4>
                         <div class="t-desc">
-                            Especialidad en Psicología del Trabajo y Estadística.
+                            Specialization in Work Psychology and Statistics.
                         </div>
                     </div>
                 </div>
@@ -829,7 +839,7 @@
         <!-- PORTFOLIO -->
         <section id="portfolio">
             <div class="section-header">
-                <h2 class="section-title">Casos de Éxito</h2>
+                <h2 class="section-title">Success Stories</h2>
             </div>
 
             <div class="pf-tabs">
@@ -846,8 +856,8 @@
                     <div class="pf-info">
                         <div class="pf-tags"><span class="pf-tag">Python</span><span class="pf-tag">TensorFlow</span></div>
                         <h3 class="pf-title">DeepPeople AI</h3>
-                        <p class="pf-desc">Aplicación web de visión por computador para análisis facial en tiempo real (género, edad, emociones).</p>
-                        <a href="https://deep-people-aibloy.herokuapp.com/" target="_blank" class="pf-link">Ver Demo <i class='bx bx-right-arrow-alt'></i></a>
+                        <p class="pf-desc">Computer vision web application for real-time facial analysis (gender, age, emotions).</p>
+                        <a href="https://deep-people-aibloy.herokuapp.com/" target="_blank" class="pf-link">View Demo <i class='bx bx-right-arrow-alt'></i></a>
                     </div>
                 </div>
 
@@ -856,8 +866,8 @@
                     <div class="pf-info">
                         <div class="pf-tags"><span class="pf-tag">DAX</span><span class="pf-tag">Business Intelligence</span></div>
                         <h3 class="pf-title">Enterprise Dashboards</h3>
-                        <p class="pf-desc">Suite de reportes estratégicos para ventas, demografía y RRHH con modelado avanzado.</p>
-                        <a href="https://github.com/Aibloy/Portafolio/blob/master/Dashboard%20Ventas.pdf" target="_blank" class="pf-link">Ver Reportes <i class='bx bx-right-arrow-alt'></i></a>
+                        <p class="pf-desc">Strategic reporting suite for sales, demographics, and HR with advanced modeling.</p>
+                        <a href="https://github.com/Aibloy/Portafolio/blob/master/Dashboard%20Ventas.pdf" target="_blank" class="pf-link">View Reports <i class='bx bx-right-arrow-alt'></i></a>
                     </div>
                 </div>
 
@@ -866,8 +876,8 @@
                     <div class="pf-info">
                         <div class="pf-tags"><span class="pf-tag">NLP</span><span class="pf-tag">Machine Learning</span></div>
                         <h3 class="pf-title">Personality Predictor</h3>
-                        <p class="pf-desc">Modelo predictivo para perfilar personalidad (Big Five) a partir de análisis de texto.</p>
-                        <a href="https://github.com/Aibloy/tfm_kschool" target="_blank" class="pf-link">Ver Código <i class='bx bx-right-arrow-alt'></i></a>
+                        <p class="pf-desc">Predictive model for profiling personality (Big Five) from text analysis.</p>
+                        <a href="https://github.com/Aibloy/tfm_kschool" target="_blank" class="pf-link">View Code <i class='bx bx-right-arrow-alt'></i></a>
                     </div>
                 </div>
 
@@ -876,8 +886,8 @@
                     <div class="pf-info">
                         <div class="pf-tags"><span class="pf-tag">R Language</span><span class="pf-tag">Clustering</span></div>
                         <h3 class="pf-title">User Clustering Study</h3>
-                        <p class="pf-desc">Análisis masivo de 68k usuarios y 2000 variables para segmentación de comportamiento.</p>
-                        <a href="https://github.com/Aibloy/Portafolio/blob/master/TFG%20-%20An%C3%A1lisis%20de%20datos%20con%20R.pdf" target="_blank" class="pf-link">Leer Estudio <i class='bx bx-right-arrow-alt'></i></a>
+                        <p class="pf-desc">Massive analysis of 68k users and 2000 variables for behavioral segmentation.</p>
+                        <a href="https://github.com/Aibloy/Portafolio/blob/master/TFG%20-%20An%C3%A1lisis%20de%20datos%20con%20R.pdf" target="_blank" class="pf-link">Read Study <i class='bx bx-right-arrow-alt'></i></a>
                     </div>
                 </div>
 
@@ -886,7 +896,7 @@
 
         <!-- FOOTER CLIENTS -->
         <section class="footer-clients">
-            <h4 class="fc-title">Clientes y Colaboraciones Anteriores</h4>
+            <h4 class="fc-title">Previous Clients and Collaborations</h4>
             <div class="fc-marquee">
                 <div class="fc-track">
                     <img src="https://companiesmarketcap.com/img/company-logos/256/SAN.png" class="fc-logo">
