@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>William Sanz Vivanco </title>
+    <title>William Sanz Vivanco | Microsoft Solutions Architect</title>
     
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
@@ -46,7 +46,7 @@
             padding: 0 24px;
         }
 
-        /* --- HERO SECTION (Two Columns - Restored) --- */
+        /* --- HERO SECTION (Two Columns) --- */
         .hero-section {
             padding: 80px 0 60px;
             display: grid;
@@ -190,7 +190,7 @@
             font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 2px;
-            color: #94a3b8; /* Subtle gray as requested */
+            color: #94a3b8;
             margin-bottom: 24px;
             font-weight: 600;
         }
@@ -237,33 +237,53 @@
         }
         .section-title { font-size: 2.2rem; font-weight: 700; color: #0f172a; }
 
-        /* --- EXPERTISE TABS & CARDS --- */
-        .expertise-menu { display: flex; gap: 15px; margin-bottom: 40px; flex-wrap: wrap; }
+        /* --- EXPERTISE TABS --- */
+        .expertise-menu {
+            display: flex; gap: 15px; margin-bottom: 40px; flex-wrap: wrap;
+        }
+
         .exp-tab-btn {
             background: white; border: 1px solid #e2e8f0; padding: 12px 24px;
             border-radius: var(--radius-full); font-weight: 600; color: var(--text-muted);
             cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 10px;
         }
+
         .exp-tab-btn:hover { background: #f8fafc; border-color: #cbd5e1; }
-        .exp-tab-btn.active { background: #0f172a; color: white; border-color: #0f172a; box-shadow: 0 4px 12px rgba(15,23,42,0.15); }
+        
+        .exp-tab-btn.active { 
+            background: #0f172a; color: white; border-color: #0f172a; box-shadow: 0 4px 12px rgba(15,23,42,0.15);
+        }
+
         .exp-tab-icon { width: 20px; height: 20px; object-fit: contain; }
 
+        /* --- EXPERTISE CARDS --- */
         .expertise-card-panel { display: none; animation: fadeIn 0.4s ease; }
         .expertise-card-panel.active { display: block; }
 
-        .tech-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; }
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
         .tech-card {
             background: white; border: 1px solid #f1f5f9; border-radius: 20px;
             padding: 30px; transition: all 0.3s ease; box-shadow: 0 4px 6px rgba(0,0,0,0.02);
             display: flex; flex-direction: column; align-items: flex-start;
         }
-        .tech-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-soft); border-color: #e2e8f0; }
+
+        .tech-card:hover {
+            transform: translateY(-5px); box-shadow: var(--shadow-soft); border-color: #e2e8f0;
+        }
+
         .tech-icon {
             width: 56px; height: 56px; background: #f8fafc; border-radius: 16px;
             display: flex; align-items: center; justify-content: center; margin-bottom: 20px;
         }
+        
         .tech-icon img { width: 32px; height: 32px; object-fit: contain; }
         .tech-icon i { font-size: 32px; color: var(--text-muted); }
+
         .tech-card h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 10px; }
         .tech-card p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.5; }
 
@@ -289,7 +309,7 @@
         .t-desc { font-size: 0.95rem; color: #64748b; line-height: 1.6; }
         .t-desc ul { padding-left: 20px; margin-top: 10px; }
 
-        /* --- PORTFOLIO (Updated with Metrics) --- */
+        /* --- PORTFOLIO --- */
         #portfolio { margin-bottom: 140px; }
         .pf-display { min-height: 500px; }
         .pf-card { 
@@ -364,7 +384,7 @@
 
     <div class="container">
         
-        <!-- HERO SECTION (Restored: Two Columns) -->
+        <!-- HERO SECTION (Split Layout) -->
         <section class="hero-section">
             <div class="hero-text-col">
                 <div class="hero-avatar-small">
@@ -372,23 +392,23 @@
                 </div>
                 
                 <h1 class="hero-title">
-                    Hello, <br> I'm William Sanz.
+                    Hello everyone, <br> I'm William Sanz.
                 </h1>
                 
                 <p class="hero-bio">
-                    I'm a <strong>Microsoft Solutions Architect</strong>. Microsoft Solutions Architect | Power Platform | Microsoft Fabric | Copilot Studio | AI Automation
+                    I'm a <strong>Microsoft Solutions Architect</strong>. I specialize in transforming complex data into tangible business solutions through Artificial Intelligence and Cloud Architecture using Microsoft Fabric, Copilot Studio & Power Platform.
                 </p>
                 
                 <div class="hero-actions">
                     <a href="mailto:williamvivanco@hotmail.es" class="btn-primary">Get in Touch</a>
                     <a href="https://www.linkedin.com/in/williamsanzvivanco/" class="social-btn" title="LinkedIn"><i class='bx bxl-linkedin'></i></a>
-                    <a href="#" class="social-btn" title="Upwork"><i class='bx bxl-upwork'></i></a>
+                    <a href="https://github.com/aibloy" class="social-btn" title="GitHub"><i class='bx bxl-github'></i></a>
+                    <a href="https://www.upwork.com/freelancers/williamsanzvivanco" class="social-btn" title="Upwork"><i class='bx bxl-upwork'></i></a>
                 </div>
             </div>
             
             <div class="hero-image-col">
                 <div class="hero-image-wrapper">
-                    <!-- Using caminante.jpg as requested -->
                     <img src="https://raw.githubusercontent.com/aibloy/williamsanz.github.io/master/images/caminante.jpg" alt="Featured Work">
                 </div>
             </div>
@@ -419,10 +439,7 @@
 
         <!-- PROFESSIONAL SUMMARY -->
         <div class="summary-text">
-            As BI & Data Analytics expert with over 7 years of experience, I lead end-to-end data integrations with Microsoft Data Analytics and Business Solutions.
-I translate business needs into scalable data architectures, from requirements gathering and modeling to development and deployment. Delivering actionable insights that empower strategic, data-driven decision-making.
-            I am open to freelance jobs and open to collaborations, currently
-100 % Job Success | Top Rated Upwork Freelancer
+            As BI & Data Analytics expert with over 7 years of experience, I lead end-to-end data integrations with Microsoft Data Analytics and Business Solutions. I translate business needs into scalable data architectures, from requirements gathering to deployment, empowering strategic decision-making.
         </div>
 
         <!-- EXPERTISE SECTION -->
@@ -465,7 +482,7 @@ I translate business needs into scalable data architectures, from requirements g
                     </div>
                     <div class="tech-card">
                         <div class="tech-icon"><img src="https://raw.githubusercontent.com/Aibloy/williamsanz.github.io/refs/heads/master/images/notebook.svg" alt="Data Science"></div>
-                        <h4>Data Analysis</h4>
+                        <h4>Data Science</h4>
                         <p>Advanced modeling and exploratory analysis using Python/PySpark notebooks.</p>
                     </div>
                     <div class="tech-card">
@@ -548,8 +565,7 @@ I translate business needs into scalable data architectures, from requirements g
 
             <div class="traj-tabs">
                 <button class="exp-tab-btn active" onclick="switchTraj(event, 't-exp')">Experience</button>
-                <button class="exp-tab-btn" onclick="switchTraj(event, 't-edu')">Education</button>
-                <button class="exp-tab-btn" onclick="switchTraj(event, 't-cert')">Certifications</button>
+                <button class="exp-tab-btn" onclick="switchTraj(event, 't-edu_certs')">Education & Certifications</button>
             </div>
 
             <div class="traj-content">
@@ -557,76 +573,96 @@ I translate business needs into scalable data architectures, from requirements g
                 <div id="t-exp" class="traj-panel active">
                     <div class="timeline-item">
                         <div class="timeline-dot"></div>
-                        <span class="t-date">2024 - Present</span>
-                        <h3 class="t-role">Freelance Power Platform Consultant</h3>
-                        <h4 class="t-company">Upwork (Global)</h4>
-                        <div class="t-desc">
-                            End-to-end development of enterprise solutions.
-                            <ul>
-                                <li>Implementation of Power Platform from scratch, more than 50 Apps and 500 Flows</li>
-                                <li>Migration of Qlick sense to Microsoft Fabric</li>
-                                <li>Custom integrations with third softwares: SAP, SQL Databases, Quickbooks, APIs...</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <span class="t-date">2023 - 2025</span>
+                        <span class="t-date">Sep 2023 - Present (2 yrs 4 mos)</span>
                         <h3 class="t-role">Senior Data Analytics & Business Applications | PMO</h3>
-                        <h4 class="t-company">NEOM (Saudi Arabia)</h4>
+                        <h4 class="t-company">NEOM (Riyadh, Saudi Arabia)</h4>
                         <div class="t-desc">
-                            Large-scale infrastructure project.
+                            Responsible for Data Analytics & Business Applications in the CEO's department.
                             <ul>
-                                <li>Design Power Platform Solutions to serve hundreds of employees efficiently.</li>
-                                </li>End-to-End Data Analytics projects with clear insights for the CEO reporting. (Microsoft Fabric)</li>
-                                <li>AI Builder models for document management.</li>
+                                <li>Designed Power Platform Solutions serving hundreds of employees efficiently.</li>
+                                <li>Led End-to-End Data Analytics projects with clear insights for CEO reporting (Microsoft Fabric).</li>
+                                <li>Incorporated AI (LLM), automated document management (AI Builder), and AI assistants (Copilot Studio).</li>
+                                <li>Business Analyst responsibilities including requirements gathering and process optimization.</li>
                             </ul>
                         </div>
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-dot"></div>
-                        <span class="t-date">2022</span>
-                        <h3 class="t-role"> Power Platform Solutions Architect</h3>
-                        <h4 class="t-company">Raona</h4>
-                        <div class="t-desc">Technical leadership, performance optimization, and mentoring.</div>
+                        <span class="t-date">Oct 2022 - Sep 2023 (1 yr)</span>
+                        <h3 class="t-role">Solutions Architect</h3>
+                        <h4 class="t-company">Raona (Madrid, Spain)</h4>
+                        <div class="t-desc">
+                            Principal Solutions Architect managing diverse clients and sectors.
+                            <ul>
+                                <li>Designed Power Platform Architectures and Business Process Automation (BPA).</li>
+                                <li>Defined policies for Power BI & Analytics solutions, training plans, and adoption strategies.</li>
+                                <li>Conducted discovery and functional requirements gathering as Business Analyst.</li>
+                                <li>Provided presales support and case study development. Clients: EcoEmbes, Santander, Iberdrola, Testa Home.</li>
+                            </ul>
+                        </div>
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-dot"></div>
-                        <span class="t-date">Apr 2022 - Oct 2022</span>
+                        <span class="t-date">Apr 2022 - Oct 2022 (7 mos)</span>
                         <h3 class="t-role">Business Intelligence Consultant</h3>
-                        <h4 class="t-company">Kabel Systems (Client: Repsol)</h4>
-                        <div class="t-desc">Document ingestion system with Azure Cognitive Services.</div>
+                        <h4 class="t-company">Kabel (Madrid, Spain)</h4>
+                        <div class="t-desc">
+                            Offered BI solutions and Business Applications with Microsoft Power Platform for Repsol (DIY).
+                            <ul>
+                                <li>Power BI Analysis and Power Platform Consulting.</li>
+                                <li>Business Analyst roles (case study, requirements).</li>
+                                <li>Improved performance of existing reports and solutions.</li>
+                            </ul>
+                        </div>
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-dot"></div>
-                        <span class="t-date">Jun 2021 - Apr 2022</span>
-                        <h3 class="t-role">Power Platform Consultant</h3>
-                        <h4 class="t-company">NTT Data (Client: Inditex)</h4>
-                        <div class="t-desc">As a consultant for Inditex, I contributed to various Business Intelligence (BI) projects. Managed end-to
-end BI solutions.</div>
+                        <span class="t-date">Jun 2021 - Apr 2022 (11 mos)</span>
+                        <h3 class="t-role">Business Intelligence Consultant</h3>
+                        <h4 class="t-company">NTT DATA (Madrid, Spain)</h4>
+                        <div class="t-desc">
+                            Contributed to various BI projects for Inditex, managing end-to-end solutions.
+                            <ul>
+                                <li>Implemented solutions from start to finish: requirements gathering, architecture design (Database, ETL, flows).</li>
+                                <li>Analyzed data and developed apps using Power Platform.</li>
+                                <li>Implemented Power BI dashboards with multiple data sources and automated business processes (RPA).</li>
+                            </ul>
+                        </div>
+                    </div>
+                     <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <span class="t-date">Jun 2019 - Jun 2021 (2 yrs 1 mo)</span>
+                        <h3 class="t-role">Data Analyst</h3>
+                        <h4 class="t-company">Nokia (Madrid, Spain)</h4>
+                        <div class="t-desc">
+                            In charge of analyzing data, building, and maintaining reports for international projects.
+                            <ul>
+                                <li>Data analysis, reporting (Dashboards), and ETL processes.</li>
+                                <li>Microsoft Power BI Analyst (Service, Desktop, Power Query, Power Pivot, DAX).</li>
+                                <li>Business Automation via Scripts, Macros, Microsoft Flows. Project Monitoring & Controlling.</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Education -->
-                <div id="t-edu" class="traj-panel" style="display:none;">
+                <!-- Education & Certifications (Combined) -->
+                <div id="t-edu_certs" class="traj-panel" style="display:none;">
                     <div class="timeline-item">
                         <div class="timeline-dot"></div>
                         <span class="t-date">2019 - 2020</span>
-                        <h3 class="t-role">Master in Data Science & Data Analysis</h3>
+                        <h3 class="t-role">Master Data Science, Data Analysis</h3>
                         <h4 class="t-company">KSchool</h4>
-                        <div class="t-desc">Machine Learning and Data Analytics. Master's Thesis in Natural language processing.</div>
+                        <div class="t-desc">Intensive program focused on Data Science and Analytics.</div>
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-dot"></div>
-                        <span class="t-date">2015 - 2019</span>
-                        <h3 class="t-role">Bachelor of Science - BS</h3>
-                        <h4 class="t-company">Complutense University of Madrid</h4>
-                        <div class="t-desc">Final Degree project: Data analysis and Clustering with R</div>
+                        <span class="t-date">Sep 2015 - Jun 2019</span>
+                        <h3 class="t-role">Bachelor of Science (BS)</h3>
+                        <h4 class="t-company">Universidad Complutense de Madrid (UCM)</h4>
+                        <div class="t-desc">Bachelor degree.</div>
                     </div>
-                </div>
-
-                <!-- Certs -->
-                <div id="t-cert" class="traj-panel" style="display:none;">
+                    
+                    <h3 style="margin-top:40px; margin-bottom:20px; font-size:1.2rem;">Certifications</h3>
                     <div class="tech-grid">
                         <div class="tech-card" style="flex-direction:row; align-items:center; gap:20px;">
                             <img src="https://images.credly.com/images/72eb3ccc-c40c-4e41-84b1-689e58af16f9/power-platform-solutions-architect-expert-600x600.png" width="60" alt="Architect">
@@ -670,12 +706,12 @@ end BI solutions.</div>
 
             <div class="pf-display">
                 
-                <!-- Project 1: DeepPeople -->
+                <!-- Project 1 -->
                 <div id="pf-deep" class="pf-card active">
                     <div class="pf-content">
                         <span class="pf-tag-label">Computer Vision</span>
                         <h3 class="pf-title">DeepPeople AI</h3>
-                        <p class="pf-desc">Web application capable of real-time facial analysis to detect gender, age, and emotions using Deep Learning.</p>
+                        <p class="pf-desc">Web application powered by convolutional neural networks capable of real-time facial analysis to detect gender, age, and emotions.</p>
                         
                         <!-- Metrics Row -->
                         <div class="pf-metrics">
@@ -702,7 +738,7 @@ end BI solutions.</div>
                     </div>
                 </div>
 
-                <!-- Project 2: Power BI -->
+                <!-- Project 2 -->
                 <div id="pf-bi" class="pf-card" style="display:none;">
                     <div class="pf-content">
                         <span class="pf-tag-label">Business Intelligence</span>
@@ -734,7 +770,7 @@ end BI solutions.</div>
                     </div>
                 </div>
 
-                <!-- Project 3: NLP -->
+                <!-- Project 3 -->
                 <div id="pf-nlp" class="pf-card" style="display:none;">
                     <div class="pf-content">
                         <span class="pf-tag-label">NLP & Machine Learning</span>
@@ -764,7 +800,7 @@ end BI solutions.</div>
                     </div>
                 </div>
 
-                <!-- Project 4: Big Data -->
+                <!-- Project 4 -->
                 <div id="pf-big" class="pf-card" style="display:none;">
                     <div class="pf-content">
                         <span class="pf-tag-label">Big Data Analysis</span>
